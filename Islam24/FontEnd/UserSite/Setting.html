@@ -24,11 +24,10 @@
                     <ul class="navbar-nav mr-auto mt-md-0">
                         <li class="nav-item "> <a class="nav-link nav-toggler  hidden-md-up  waves-effect waves-dark" href="javascript:void(0)"><i class="fas  fa-bars"></i></a></li>
                         <li class="nav-item m-l-10"> <a class="nav-link sidebartoggler hidden-sm-down text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="fas fa-bars"></i></a> </li>
-                        <li class="nav-item mt-3">
-                            <a href="admin.html"></a>ADMIN</li>
+                        <li class="nav-item mt-3">ADMIN</li>
                     </ul>
                     <ul class="navbar-nav my-lg-0">
-                        <li class="nav-item"><a href="login.html" class="btn btn-sm btn-success">Logout</a></li>
+                        <li class="nav-item"><a href="" class="btn btn-sm btn-danger">Logout</a></li>
                     </ul>
                 </div>
             </nav>
@@ -38,7 +37,7 @@
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
                         <li class="nav-devider mt-0" style="margin-bottom: 5px"></li>
-                        <li> <a href="admin.html"><span> <i class="fas fa-home"></i> </span><span class="hide-menu">Dashboard</span></a></li>
+                        <li> <a href="admin.html"><span> <i class="fas fa-home"></i> </span><span class="hide-menu">Home</span></a></li>
                         <li> <a href="visitortable.html"><span> <i class="fas fa-users"></i> </span><span class="hide-menu">Visitor</span></a></li>
 
                         <li> <a href="service.html"><span> <i class="fas fa-globe"></i> </span><span class="hide-menu">Services</span></a></li>
@@ -46,14 +45,56 @@
                         <li> <a href="user.html"><span> <i class="fas fa-book-open"></i> </span><span class="hide-menu">Users</span></a></li>
                         <li> <a href="imam.html"><span> <i class="fas fa-code"></i></i> </span><span class="hide-menu">Imam</span></a></li>
                         <li> <a href="#"><span> <i class="far fa-envelope"></i> </span><span class="hide-menu">Comments</span></a></li>
-                        <li> <a href="#"><span> <i class="far fa-envelope"></i> </span><span class="hide-menu">Settings</span></a></li>
-                        <li> <a href="#"><span> <i class="far fa-envelope"></i> </span><span class="hide-menu">Account</span></a></li>
-
                     </ul>
                 </nav>
             </div>
         </aside>
         <div class="page-wrapper">
+
+
+
+            <!-- id change -->
+            <div class="container py-5">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                Edit Name And Email
+                            </div>
+                            <div class="card-body">
+                                <form>
+                                    <label for="name">Name:</label>
+                                    <input type="text" class="form-control">
+                                    <label for="name">Email:</label>
+                                    <input type="email" class="form-control">
+                                    <button class="btn btn-primary btn-sm">Update</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- change password -->
+                    <div class="col-12 py-5">
+                        <div class="card">
+                            <div class="card-header">
+                                Change Password
+                            </div>
+                            <div class="card-body">
+                                <form>
+                                    <label for="name">Current Password:</label>
+                                    <input type="text" class="form-control">
+                                    <label for="name">New Password:</label>
+                                    <input type="email" class="form-control">
+                                    <label for="name">Confirm New Password:</label>
+                                    <input type="email" class="form-control">
+                                    <button class="btn btn-primary btn-sm">Update Password</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
 
 
 
