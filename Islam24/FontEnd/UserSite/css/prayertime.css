@@ -32,3 +32,12 @@
 #prayer-container tbody td:nth-child(2) {
     text-align: right;
 }
+
+.mymargin {
+    margin-top: 100px;
+}
+
+#home-image {
+    background: url('../image/prayertime.jpg') no-repeat center top;
+    background-size: cover;
+}

@@ -62,15 +62,62 @@
 
     <span class="w3-sidebar w3-bar-block w3-border-right" style="display:none;margin-top: 70px;" id="mySidebar">
         <button onclick="w3_close()" class="w3-bar-item w3-large">Close &times;</button>
-        <a href="#" class="w3-bar-item w3-button">Time</a>
-        <a href="#" class="w3-bar-item w3-button">Converter</a>
-        <a href="#" class="w3-bar-item w3-button">Find quran</a>
-        <a href="#" class="w3-bar-item w3-button">Find Hadith Book</a>
-        <a href="#" class="w3-bar-item w3-button">Quiz</a>
+        <a href="prayertime.html" class="w3-bar-item w3-button">Time</a>
+        <a href="converter.html" class="w3-bar-item w3-button">Converter</a>
+        <a href="quran.html" class="w3-bar-item w3-button">Find Surah</a>
+        <a href="hadith.html" class="w3-bar-item w3-button">Find Hadith Book</a>
+        <a href="quiz.html" class="w3-bar-item w3-button">Quiz</a>
+        <a href="audio.html" class="w3-bar-item w3-button">Audio Quran</a>
     </span>
 
+    <div class="container ">
+        <div class="py-5">
+            <div id="home-image">
+                <div class="row align-item-center  justify-content-center py-5">
+                    <div class="col-8 text-center">
+                        <h3>Prayer Times</h3>
+                        <h4>Dhaka,Bangladesh</h4>
+                        <h4>9:42 PM</h4>
+                        <table class="table table-success">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>Prayer</th>
+                                    <th>Time</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Fajr</td>
+                                    <td>4:30 am</td>
+                                </tr>
+                                <tr>
+                                    <td>Duhar</td>
+                                    <td>11:55 am</td>
+                                </tr>
+                                <tr>
+                                    <td>Asr</td>
+                                    <td>3:30 pm</td>
+                                </tr>
+                                <tr>
+                                    <td>Maghrib</td>
+                                    <td>6:20 pm</td>
+                                </tr>
+                                <tr>
+                                    <td>Isha</td>
+                                    <td>7:20 pm</td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <!-- prayer time list -->
-    <div style="margin-top: 200px; border:1px solid #c0c0c0" id="prayer-container">
+    <!-- <div id="prayer-container">
         <div class="prayer_time">Prayer Times</div>
         <div id="prayer_city"></div>
         <div id="prayer_date"></div>
@@ -103,8 +150,8 @@
                 </tr>
             </tbody>
         </table>
-    </div>
-    <script>
+    </div> -->
+    <!-- <script>
         var api_url = 'https://api.pray.zone/v2/times/today.json?city=dhaka';
         document.addEventListener("DOMContentLoaded", function() {
             PrayerTimesApi();
@@ -167,7 +214,7 @@
                 time(local_offset);
             }, 1000);
         }
-    </script>
+    </script> -->
     <!--prayer list -->
 
     <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
