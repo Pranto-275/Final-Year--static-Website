@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Islam24 | An Islamic Website</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet">
+    <link href="css/owl.carousel.min.css" rel="stylesheet">
+    <link href="css/fontawesome.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/prayertime.css">
+</head>
+
+<body>
+    <!-- Navbar start -->
+    <nav class="navbar fixed-top nav-before navbar-expand-lg navbar-light bg-light">
+
+        <!-- sidebar start-->
+
+        <span class="w3-teal">
+            <button class="w3-button w3-teal w3-xlarge" onclick="w3_open()">☰</button>
+        </span>
+
+        <!-- sidebar end -->
+
+
+        <a class="navbar-brand" href="#"><img class="nav-logo" src="image/Logo2.png"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mynavbar" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mynavbar">
+            <ul class="navbar-nav ml-auto mt-3 mt-lg-0">
+                <li class="nav-item active">
+                    <a class="nav-link nav-font" href="#">Home </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-font" href="#map">Map</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-font" href="#quiz">Learn Quran </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-font" href="#lquran">Quiz</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-font" href="#contact">Contact</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <a href="signup.html" class="normal-btn btn">Sign Up</a>
+            </form>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+
+    <span class="w3-sidebar w3-bar-block w3-border-right" style="display:none;margin-top: 70px;" id="mySidebar">
+        <button onclick="w3_close()" class="w3-bar-item w3-large">Close &times;</button>
+        <a href="#" class="w3-bar-item w3-button">Time</a>
+        <a href="#" class="w3-bar-item w3-button">Converter</a>
+        <a href="#" class="w3-bar-item w3-button">Find quran</a>
+        <a href="#" class="w3-bar-item w3-button">Find Hadith Book</a>
+        <a href="#" class="w3-bar-item w3-button">Quiz</a>
+    </span>
+
+    <!-- prayer time list -->
+    <div style="margin-top: 200px; border:1px solid #c0c0c0" id="prayer-container">
+        <div class="prayer_time">Prayer Times</div>
+        <div id="prayer_city"></div>
+        <div id="prayer_date"></div>
+        <div id="prayer_clock"></div>
+        <table>
+            <tbody>
+                <tr>
+                    <td>Imsak</td>
+                    <td id="Imsak"></td>
+                </tr>
+                <tr>
+                    <td>Fajr</td>
+                    <td id="Fajr"></td>
+                </tr>
+                <tr>
+                    <td>Dhuhr</td>
+                    <td id="Dhuhr"></td>
+                </tr>
+                <tr>
+                    <td>Asr</td>
+                    <td id="Asr"></td>
+                </tr>
+                <tr>
+                    <td>Maghrib</td>
+                    <td id="Maghrib"></td>
+                </tr>
+                <tr>
+                    <td>Isha</td>
+                    <td id="Isha"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        var api_url = 'https://api.pray.zone/v2/times/today.json?city=dhaka';
+        document.addEventListener("DOMContentLoaded", function() {
+            PrayerTimesApi();
+        });
+
+        function PrayerTimesApi() {
+            var userLang = navigator.language || navigator.userLanguage;
+            var options = {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            };
+            var request = new XMLHttpRequest();
+            request.onreadystatechange = function() {
+                if (request.readyState === 4) {
+                    if (request.status === 200) {
+                        var prayer_results = JSON.parse(request.responseText);
+                        console.log(JSON.stringify(prayer_results.results.location.local_offset));
+                        var prayer_date = new Date(prayer_results.results.datetime[0].date.gregorian);
+
+                        var local_offset = prayer_results.results.location.local_offset;
+                        document.getElementById("prayer_city").innerHTML = prayer_results.results.location.city;
+                        document.getElementById("prayer_date").innerHTML = prayer_date.toLocaleDateString(userLang, options);
+                        document.getElementById("Imsak").innerHTML = prayer_results.results.datetime[0].times.Imsak;
+                        document.getElementById("Fajr").innerHTML = prayer_results.results.datetime[0].times.Fajr;
+                        document.getElementById("Dhuhr").innerHTML = prayer_results.results.datetime[0].times.Dhuhr;
+                        document.getElementById("Asr").innerHTML = prayer_results.results.datetime[0].times.Asr;
+                        document.getElementById("Maghrib").innerHTML = prayer_results.results.datetime[0].times.Maghrib;
+                        document.getElementById("Isha").innerHTML = prayer_results.results.datetime[0].times.Isha;
+                        SetTheClock(local_offset);
+
+                    } else {
+                        console.log('An error occurred during your request: ' + request.status + ' ' + request.statusText);
+                    }
+                }
+            };
+            request.open('Get', api_url, true);
+            request.send();
+        }
+
+        function time(offset) {
+            var location_date = new Date(new Date().getTime() + (offset * 60000));
+            var hours = location_date.getUTCHours(),
+                minutes = location_date.getUTCMinutes(),
+                seconds = location_date.getUTCSeconds();
+            hours = addZero(hours);
+            minutes = addZero(minutes);
+            seconds = addZero(seconds);
+            document.getElementById("prayer_clock").innerHTML = hours + ':' + minutes + ':' + seconds;
+        }
+
+        function addZero(val) {
+            return (val <= 9) ? ("0" + val) : val;
+        }
+
+        function SetTheClock(local_offset) {
+            time(local_offset);
+            setInterval(function() {
+                time(local_offset);
+            }, 1000);
+        }
+    </script>
+    <!--prayer list -->
+
+    <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="js/popper.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="js/axios.min.js"></script>
+    <script type="text/javascript" src="js/custom.js"></script>
+
+</body>
+
+</html>
